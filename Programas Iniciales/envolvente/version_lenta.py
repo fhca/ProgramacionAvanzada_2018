@@ -14,6 +14,20 @@ def izquierda(p, q, r):
     return np.linalg.det(m) > 2e-15  # margen de error
 
 
+def izquierda2(p, q, r):
+    """Modificación para detectar puntos colineales"""
+    m = np.concatenate((p, q, r))
+    m = np.hstack((m.reshape(3, 2), np.ones((3, 1))))
+    margen_de_error = 2e-15
+    determinante = np.linalg.det(m)
+    if determinante > margen_de_error:
+        return +1
+    elif determinante < -margen_de_error:
+        return -1
+    else:
+        return 0
+
+
 def genera_puntos(tamano):
     """generea un arreglo de 'tamano' puntos al azar."""
     return np.random.randn(tamano * 2).reshape(tamano, 2) * 100
@@ -49,9 +63,24 @@ def envolvente_lenta(puntos):
     return _e
 
 
+def ordena(e):
+    """Ordena horariamente los extremos de arista en e. Versión super lenta."""
+    env = []
+    p, q = e[0]
+    env.append(p)
+    while dif(q, p):
+        for a, b in e:
+            if not dif(a, q):
+                env.append(q)
+                q = b
+                break
+    env.append(p)
+    return np.array(env)
+
+
 p = genera_puntos(80)
 f = muestra_puntos(p)
 e = envolvente_lenta(p).reshape(-1, 2, 2)  # todas las aristas constan de dos coord de dos puntos
-for pair in e:
-    f.line(*pair.T, color="red")
+o = ordena(e)
+f.line(*o.T, color="red")
 show(f)
