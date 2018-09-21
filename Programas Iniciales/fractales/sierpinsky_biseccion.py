@@ -18,26 +18,28 @@ def paso_iterativo(triangulos):
         lista.extend([[a, ab, ca], [b, bc, ab], [c, ca, bc]])
     return np.array(lista)
 
+def sierpinski(n):
+    v = np.array([  # arreglo de triángulos, iniciando con el 1o
+        [
+            [0, 0],
+            [1, 0],
+            [.5, np.sqrt(3) / 2]
+        ]
+    ])
 
-v = np.array([  # arreglo de triángulos, iniciando con el 1o
-    [
-        [0, 0],
-        [1, 0],
-        [.5, np.sqrt(3) / 2]
-    ]
-])
+    dibujos = [Polygon(v[0])]  # guardará los dibujos (inicia con el 1er triángulo)
+    # Los vértices son solo coordenadas, para que sea dibujable hay que usar Polygon
+    # En la lista "dibujos" guardamos todas las figuras dibujables.
+    for i in range(n):  # solo 7 iteraciones
+        v1 = paso_iterativo(v)  # construye los vértices de los nuevos triángulos
+        for pol in v1:
+            dibujos.append(Polygon(pol))  # agrega cada triángulo (como polígono) a los dibujos
+        v = v1  # actualiza el arreglo de triángulos para aplicarles un nuevo paso_iterativo
 
-dibujos = [Polygon(v[0])]  # guardará los dibujos (inicia con el 1er triángulo)
-# Los vértices son solo coordenadas, para que sea dibujable hay que usar Polygon
-# En la lista "dibujos" guardamos todas las figuras dibujables.
-for i in range(7):  # solo 7 iteraciones
-    v1 = paso_iterativo(v)  # construye los vértices de los nuevos triángulos
-    for pol in v1:
-        dibujos.append(Polygon(pol))  # agrega cada triángulo (como polígono) a los dibujos
-    v = v1  # actualiza el arreglo de triángulos para aplicarles un nuevo paso_iterativo
+    p = PatchCollection(dibujos, alpha=.5)  # construye la colección de dibujos
+    p.set_array(200 * np.random.rand(len(dibujos)))  # colores aleatorios
+    fig, ax = subplots()  # área para dibujar
+    ax.add_collection(p)  # añade la colección al área
+    show()  # muestra lo dibujado
 
-p = PatchCollection(dibujos, alpha=.5)  # construye la colección de dibujos
-p.set_array(200 * np.random.rand(len(dibujos)))  # colores aleatorios
-fig, ax = subplots()  # área para dibujar
-ax.add_collection(p)  # añade la colección al área
-show()  # muestra lo dibujado
+sierpinski(2)
