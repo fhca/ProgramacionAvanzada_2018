@@ -65,8 +65,9 @@ rama = ["+F", {"F": "F[RRF][LLLFF]"}]
 rama2 = ["+F", {"F": "F[-F]F[+F][F]"}]
 rama3 = ["+F", {"F": "F[RF]F[LF]"}]
 rama4 = ["+F", {"F": "F[(+F)][(-F)]"}]
-rama5 = ["+F", {"F": "F[LLLF][LF]"}]
+rama5 = ["+F", {"F": "F[LLLF[(LFRF)][(RFLF)]][RF[(LFRF)][(RFLF)]]"}]
 sierpinsky3 = ["A", {"A": "BRARB", "B": "ALBLA"}]
+rama6 = ["+F", {"F": "[F[(>F) [(RRF)][(F)][(LLF)]] [(<F) [(LLF)][(F)][(RRF)]] ]"}]
 
-ls = itera(*sierpinsky, 1)
+ls = itera(*rama6, 4)
 pinta(ls)
