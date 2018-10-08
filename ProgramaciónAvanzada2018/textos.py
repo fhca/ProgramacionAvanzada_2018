@@ -1,10 +1,10 @@
 __author__ = 'fhca'
 
 import re
-
+import io
 
 def estadisticas(libro):
-    with open(libro) as f:
+    with io.open(libro, mode='r', encoding="utf-8") as f:
         t = f.readlines()
 
     words = re.compile(r'\W+')

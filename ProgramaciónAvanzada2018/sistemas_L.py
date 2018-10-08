@@ -69,5 +69,7 @@ rama5 = ["+F", {"F": "F[LLLF[(LFRF)][(RFLF)]][RF[(LFRF)][(RFLF)]]"}]
 sierpinsky3 = ["A", {"A": "BRARB", "B": "ALBLA"}]
 rama6 = ["+F", {"F": "[F[(>F) [(RRF)][(F)][(LLF)]] [(<F) [(LLF)][(F)][(RRF)]] ]"}]
 
-ls = itera(*rama6, 4)
+rama7 = ["+F", {"F": "F[RRRRF>L[RRF][+F]][FLLF<[F][-F]]"}]
+
+ls = itera(*rama7, 1)
 pinta(ls)
