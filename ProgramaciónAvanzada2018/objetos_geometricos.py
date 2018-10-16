@@ -1,7 +1,5 @@
 __author__ = 'fhca'
 
-import numpy as np
-
 
 class ObjetoGeometrico:
     """Describir las cosas comunes (acciones y características)
@@ -25,13 +23,14 @@ class ObjetoGeometrico:
         print("Objeto", nombre_de_la_variable)
         print("Nombre:", self.dame_nombre())
         print("Planeta", self.planeta)
+        print("Área", self.area())
+        print("Perimetro", self.perimetro())
 
     def area(self):
         pass
 
     def perimetro(self):
         pass
-
 
 
 if __name__ == "__main__":

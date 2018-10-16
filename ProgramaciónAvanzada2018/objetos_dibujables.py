@@ -1,13 +1,23 @@
 __author__ = 'fhca'
 
+import numpy as np
+import tkinter as tk
+
+
 class Dibujable:
+    try:
+        lienzo
+    except NameError:
+        lienzo_dim = np.array((550, 550))
+        lienzo = tk.Canvas(width=lienzo_dim[0], height=lienzo_dim[1], bg='white')
+        lienzo.pack(expand=tk.YES, fill=tk.BOTH)
+
     def __init__(self):
-        self.posicion = np.random.rand(2)  # posición son dos coord. al azar
+        self.posicion = np.random.rand(2) * Dibujable.lienzo_dim  # posición son dos coord. al azar
 
     def pinta(self):
-        pass  # no pondré las operaciones en este momento
+        pass
 
     def mueve_a_xy(self, x, y):
         """Mueve el objeto a la posición (x,y)."""
         self.posicion = np.array((x, y))
-
