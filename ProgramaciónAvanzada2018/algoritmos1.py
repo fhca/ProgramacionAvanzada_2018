@@ -1,4 +1,4 @@
-"""Localiza el menor valor de una lista de números"""
+"""Localiza el menor/mayor valor de una lista de números"""
 
 def minimo(a):
     min = a[0]
