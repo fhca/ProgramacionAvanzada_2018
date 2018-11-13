@@ -23,7 +23,7 @@ class NuevaLista:
         return self.chivito.size
 
 
-def length(lista):
+def longitud(lista):
     return len(lista)
 
 
@@ -32,4 +32,7 @@ def ciclo(inicio=1, fin=1, paso=1):
     return range(inicio, fin + 1, paso)
 
 
-INFINITO = np.inf
+INFINITO = 1e10
+
+def piso(n):
+    return int(np.floor(n))
