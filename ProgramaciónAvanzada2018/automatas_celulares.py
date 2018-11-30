@@ -2,7 +2,7 @@ __author__ = 'fhca'
 
 import numpy as np
 
-e = np.zeros((1300, 1300), dtype=bool)
+e = np.zeros((130, 130), dtype=bool)
 
 # e[0, 1] = e[0, 3] = e[0, 4] = e[0, 5] = e[0, 8] = e[0, 11] = 1
 
