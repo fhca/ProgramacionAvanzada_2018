@@ -20,8 +20,8 @@ def graficar(ys):
 
 
 ys = leer_archivo()
-#ys = ys[50000:150000] subintervalo
-#graficar(ys)
+ys = ys[50000:150000]  # subintervalo
+graficar(ys)
 
-plt.hist(ys, 100)  # 100 bins
+#plt.hist(ys, 100)  # 100 bins
 plt.show()
