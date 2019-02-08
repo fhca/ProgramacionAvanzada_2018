@@ -18,6 +18,11 @@ class Dibujable:
     def pinta(self):
         pass
 
+    def avanza(self, dx, dy):
+        "'incrementa' la posición en (dx, dy)"
+        self.posicion = self.posicion + np.array((dx, dy))
+
+
     def mueve_a_xy(self, x, y):
         """Mueve el objeto a la posición (x,y)."""
         self.posicion = np.array((x, y))

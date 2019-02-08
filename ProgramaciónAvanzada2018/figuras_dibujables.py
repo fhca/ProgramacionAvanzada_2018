@@ -43,6 +43,11 @@ for _ in range(50):
     t.append(TrianguloDibujable())
     t[-1].pinta()
 
+for veces in range(100):
+    for triangulo in t:
+        triangulo.avanza(+1, -1)
+        triangulo.pinta()
+
 import tkinter as tk
 
 tk.mainloop()
