@@ -42,8 +42,8 @@ def hipocicloide(r=1, R=1, colores=100):
         colorVal = scalarMap.to_rgba(_)
         plt.plot(ap, bp, linewidth=.5, color=colorVal)
 
+import time
+hipocicloide(r=4.01, colores=100)
+#hipocicloide(r=4.001, colores=4000)
 
-hipocicloide(r=6)
-#hipocicloide(R=4.01)
-
-plt.show()
+#plt.show()
