@@ -6,7 +6,7 @@ import matplotlib.cm as cmx
 import numpy as np
 
 f = plt.figure()
-#f.add_subplot(111)
+# f.add_subplot(111)
 plt.axis('equal')
 
 
@@ -27,7 +27,7 @@ def cicloide(a=0, b=0, radio=1, angulo=0):
 
 def hipocicloide(r=1, R=1, colores=100):
     ainic = 0
-    #mapa = cm = plt.get_cmap('ocean')
+    # mapa = cm = plt.get_cmap('ocean')
     mapa = cm = plt.get_cmap('hsv')
     cNorm = colors.Normalize(vmin=0, vmax=colores)
     scalarMap = cmx.ScalarMappable(norm=cNorm, cmap=mapa)
@@ -42,8 +42,10 @@ def hipocicloide(r=1, R=1, colores=100):
         colorVal = scalarMap.to_rgba(_)
         plt.plot(ap, bp, linewidth=.5, color=colorVal)
 
-import time
-hipocicloide(r=4.01, colores=100)
-#hipocicloide(r=4.001, colores=4000)
 
-#plt.show()
+import time
+
+hipocicloide(r=4.01, colores=100)
+# hipocicloide(r=4.001, colores=4000)
+
+# plt.show()
