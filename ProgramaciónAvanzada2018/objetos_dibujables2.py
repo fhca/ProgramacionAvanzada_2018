@@ -12,8 +12,8 @@ class Dibujable:
         paso = .5
 
     def __init__(self):
-        self.posicion = np.random.rand(2) * Dibujable.lienzo_dim  # posición son dos coord. al azar
-        self.centro = self.posicion
+        self.centro = np.random.rand(2) * Dibujable.lienzo_dim  # posición son dos coord. al azar
+        self.posicion = self.centro
         self.orientacion = 0
         self.id = 0
 
