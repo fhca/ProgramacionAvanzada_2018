@@ -91,21 +91,21 @@ class Lista:
         else:
             return False
 
+def pruebas_Lista():
+    l = Lista()
+    l.guardar("Paty")  # guarda el dato "Paty" en la lista l
+    l.guardar("Samuel")
+    l.guardar("Uriel")
+    l.guardar("David")
+    l.guardar("Max")
+    l.guardar("Abraham")
+    l.guardar("Angel")
+    l.mostrar()
 
-l = Lista()
-l.guardar("Paty")  # guarda el dato "Paty" en la lista l
-l.guardar("Samuel")
-l.guardar("Uriel")
-l.guardar("David")
-l.guardar("Max")
-l.guardar("Abraham")
-l.guardar("Angel")
-l.mostrar()
-
-if l.buscar("Samuel"):
-    print("Si está Samuel")
-else:
-    print("No está Samuel")
+    if l.buscar("Samuel"):
+        print("Si está Samuel")
+    else:
+        print("No está Samuel")
 
 """
 Para guardar 7 datos, tuve que usar 28 pasos!!! 7*8/2 n(n+1)/2 = O(n^2)
@@ -153,12 +153,91 @@ class Lista2:
 
 """Con esto se reduce la complejidad temporal de 'guardar' de O(n^2) a O(1)"""
 
-l = Lista2()
-l.guardar("Paty")  # guarda el dato "Paty" en la lista l
-l.guardar("Samuel")
-l.guardar("Uriel")
-l.guardar("David")
-l.guardar("Max")
-l.guardar("Abraham")
-l.guardar("Angel")
-l.mostrar()
+def pruebas_Lista2():
+    l = Lista2()
+    l.guardar("Paty")  # guarda el dato "Paty" en la lista l
+    l.guardar("Samuel")
+    l.guardar("Uriel")
+    l.guardar("David")
+    l.guardar("Max")
+    l.guardar("Abraham")
+    l.guardar("Angel")
+    l.mostrar()
+
+
+class Nodo_arbol:
+    def __init__(self, dato):
+        self.dato = dato
+        self.izq = None
+        self.der = None
+
+    def muestra(self):
+        print(self.dato)
+
+class Arbol:
+    """Árbol binario, no necesariamente balanceado."""
+    def __init__(self):
+        self.raiz = None
+
+    def esta_vacío(self):
+        "True = árbol vacío"
+        return self.raiz is None
+
+    def guardar(self, dato):
+        if self.esta_vacío():
+            self.raiz = Nodo_arbol(dato)
+        else:
+            self.guarda_en_subarbol(dato, self.raiz)
+
+    def guarda_en_subarbol(self, dato, nodo):
+        """Toma nodo como raiz del subarbol e intenta guardar ahí el dato."""
+        if dato < nodo.dato:
+            if nodo.izq:
+                self.guarda_en_subarbol(dato, nodo.izq)
+            else:
+                nodo.izq = Nodo_arbol(dato)
+        else:
+            if nodo.der:
+                self.guarda_en_subarbol(dato, nodo.der)
+            else:
+                nodo.der = Nodo_arbol(dato)
+
+    def mostrar(self):
+        """Recorrido "in-orden" (IRD) del árbol."""
+        self.muestra_ird(self.raiz)
+
+    def muestra_ird(self, raiz):
+        if raiz:
+            if raiz.izq:
+                self.muestra_ird(raiz.izq)
+            raiz.muestra()
+            if raiz.der:
+                self.muestra_ird(raiz.der)
+
+def prueba1_arbol():
+    a = Arbol()
+    a.guardar(4)
+    a.guardar(2)
+    a.guardar(6)
+    a.guardar(1)
+    a.guardar(3)
+    a.guardar(5)
+    a.guardar(7)
+    a.mostrar()
+
+def prueba2_arbol():
+    a = Arbol()
+    a.guardar("Abraham")
+    a.guardar("Max")
+    a.guardar("Uriel")
+    a.guardar("David")
+    a.guardar("Samuel")
+    a.guardar("Paty")
+    a.guardar("Claudia")
+    a.guardar("Botitas")
+    a.guardar("Suky")
+    a.guardar("Felipe")
+    a.mostrar()
+
+
+prueba2_arbol()
